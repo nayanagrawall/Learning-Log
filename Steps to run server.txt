@@ -1,0 +1,2 @@
+1. Activate the virtual environment - ll_env\Scripts\activate
+2. Run the server - python manage.py runserver
