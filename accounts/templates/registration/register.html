@@ -1,0 +1,14 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+
+<form action="{% url 'accounts:register' %}" method="post">
+    {% csrf_token %}
+    {{form.as_div}}
+    <!-- as_div method, display all the fields in the form appropriately, including any error messages
+    if form isn't filled out correctly. -->
+
+    <button name="submit">Register</button>
+</form>
+
+{% endblock content %}
