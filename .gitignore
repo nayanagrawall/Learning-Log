@@ -1,5 +1,4 @@
 .idea
-learning_logs/migrations/__pycache__/
-learning_logs/__pycache__/
-accounts/__pycache__/
 **/__pycache__/
+ll_env/
+*.sqlite3
