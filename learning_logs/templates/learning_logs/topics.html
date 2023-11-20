@@ -7,13 +7,17 @@
 
 <ul class="list-group border-bottom pb-2 mb-4">
     {% for topic in topics %}
-    <li class="list-group-item border-0">
-        <a href="{% url 'learning_logs:topic' topic.id %}">
-            {{topic.text}}
+    <li class="list-group-item d-flex justify-content-between align-items-start border-0">
+        <a href="{% url 'learning_logs:topic' topic.id %}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-1000 justify-content-between">
+                <h5 class="mb-1">{{topic.text}}</h5>                               
+            </div>            
         </a>
-        <a href="{% url 'learning_logs:edit_topic' topic.id %}">
-            Edit Topic
-        </a>
+        <p>
+            <small><a href="{% url 'learning_logs:edit_topic' topic.id %}">
+            Edit
+            </a></small>
+        </p>
     </li>
     {% endfor %}
 </ul>
