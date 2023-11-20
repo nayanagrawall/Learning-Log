@@ -100,3 +100,25 @@ def edit_entry(request, entry_id):
 
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'learning_logs/edit_entry.html', context)
+
+
+@login_required
+def edit_topic(request, topic_id):
+    """Edit an existing Topic Name"""
+    topic = Topic.objects.get(id=topic_id)
+
+    # Make sure the topic belongs to the current user
+    if topic.owner != request.user:
+        raise Http404
+
+    if request.method != 'POST':
+        # Initial request, prefill the topic form
+        form = TopicForm(instance=topic)
+    else:
+        form = TopicForm(instance=topic, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('learning_logs:topic', topic_id=topic_id)
+
+    context = {'topic': topic, 'form': form}
+    return render(request, 'learning_logs/edit_topic.html', context)
